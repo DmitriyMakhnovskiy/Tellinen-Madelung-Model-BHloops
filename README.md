@@ -1,6 +1,6 @@
 # Tellinen–Madelung Magnetic Hysteresis Model
 
-This repository contains a Python implementation of the **Tellinen–Madelung magnetic hysteresis model** and its application to the transient calculation of a nonlinear inductor with a ferromagnetic core.
+This repository contains a Python implementation of the **Tellinen–Madelung magnetic hysteresis model** and its application to the transient calculation of a nonlinear inductor with a ferromagnetic core. 
 
 The repository contains three related Python projects and one LTspice comparison model:
 
@@ -76,8 +76,6 @@ Auxiliary Python project for generating a synthetic major hysteresis loop using 
 Chan-Major-Loop/
 │
 ├── main.py
-├── Parameters.py
-├── Parameters.txt
 └── Major_Loop.csv
 ```
 
