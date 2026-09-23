@@ -15,7 +15,7 @@ Tellinen-Madelung-Model/
 
 The first project calculates symmetric and asymmetric hysteresis loops using the Tellinen model combined with Madelung return-point memory. The second project uses the same hysteresis model in the transient calculation of a nonlinear inductor. The `LTspice_Inductor with a magnetic core` folder contains the LTspice schematic used for comparison with the Python inductor calculations. The `Chan-Major-Loop` project is an auxiliary tool for generating a synthetic Chan major loop for testing and comparison.
 
-A detailed description of the mathematical model, numerical algorithms, and implementation is given in the PDF report `Tellinen-Madelung-Model-Symmetrical&Asymmetrical-BHloops.pdf`.
+A detailed description of the mathematical model, numerical algorithms, and implementation is given in the PDF report `Tellinen-Madelung-Model-Symmetrical&Asymmetrical-BHloops.pdf` (in English and Russian).
 
 ## Tellinen-Madelung-Model-Symmetrical&Asymmetrical-BHloops
 
