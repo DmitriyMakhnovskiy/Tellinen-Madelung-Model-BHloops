@@ -1,0 +1,42 @@
+# ============================================================
+# Tellinen-Madelung model parameters
+# ============================================================
+
+# Hc is retained because the unchanged Hscan2() test function
+# uses it to set the bias field and oscillation amplitude.
+Hc=120.0
+
+# ------------------------------------------------------------
+# STARTING MAGNETIC STATE
+# ------------------------------------------------------------
+# Allowed values:
+#   initial
+#   upper_major
+#   lower_major
+root_branch=initial
+
+# Starting magnetic-field strength, A/m.
+# B at the starting point is obtained automatically from the
+# selected root branch in Major_Loop.csv.
+Hstart=0.0
+
+# ------------------------------------------------------------
+# NUMERICAL TOLERANCES
+# ------------------------------------------------------------
+H_tol=1.0e-9
+B_tol=1.0e-9
+D_tol=1.0e-12
+
+# ------------------------------------------------------------
+# NUMERICAL INTEGRATION
+# ------------------------------------------------------------
+# Allowed values:
+#   trapezoid  - linear formula, global error O(dH^2)
+#   lagrange   - 3-point quadratic Lagrange formula,
+#                global error O(dH^4) for smooth functions
+IntegrationMethod=lagrange
+
+# Number of subintervals used for each definite integral.
+# For 'lagrange' an even number is used; if an odd number is
+# specified, the program automatically increases it by one.
+IntegrationIntervals=500

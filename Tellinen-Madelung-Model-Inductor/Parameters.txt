@@ -1,0 +1,106 @@
+# ============================================================
+# INITIAL MAGNETIC STATE
+# ============================================================
+
+# root_branch:
+#   initial
+#   upper_major
+#   lower_major
+root_branch=initial
+
+# Initial magnetic field strength [A/m]
+Hstart=0.0
+
+
+# ============================================================
+# MAGNETIC CORE AND COIL PARAMETERS
+# ============================================================
+
+# Number of coil turns [-]
+N=200
+
+# Coil resistance [ohm]
+R=0.61
+
+# Mean magnetic path length in ferromagnetic core [m]
+Lm=0.16
+
+# Effective magnetic cross-sectional area [m^2]
+A=0.004
+
+# Air-gap length [m]
+Lg=0.00
+
+
+# ============================================================
+# VOLTAGE SOURCE PARAMETERS
+# ============================================================
+
+# DC voltage offset [V]
+V_offset=0.0
+
+# Sinusoidal voltage amplitude [V]
+V_amplitude=290.0
+
+# Voltage frequency [Hz]
+V_frequency=50.0
+
+# Voltage amplitude for the hysteresis-memory test [V]
+V_test=200.0
+
+# ============================================================
+# SIMULATION PARAMETERS
+# ============================================================
+
+# Total simulation time [s]
+simulation_time=0.135
+
+# Time step [s]
+# 1e-5 gives 2000 steps per 50-Hz period.
+# Reduce it for a time-step convergence study.
+dt=0.000001
+
+
+# ============================================================
+# TELLINEN-MADELUNG NUMERICAL PARAMETERS
+# ============================================================
+
+# H comparison tolerance [A/m]
+H_tol=1.0e-10
+
+# B comparison / envelope tolerance [T]
+B_tol=1.0e-9
+
+# Minimum admissible major-loop width [T]
+D_tol=1.0e-12
+
+# Numerical Stieltjes integral method:
+#   trapezoid
+#   lagrange
+IntegrationMethod=lagrange
+
+# Number of integration intervals per Tellinen integral
+IntegrationIntervals=200
+
+
+# ============================================================
+# NONLINEAR SOLVER PARAMETERS
+# ============================================================
+
+# Electrical residual tolerance [V]
+residual_tol=1.0e-9
+
+# Maximum number of root-bracketing iterations
+max_bracket_iter=80
+
+# Maximum number of bisection iterations
+max_bisection_iter=120
+
+# Initial H increment for root bracketing [A/m]
+initial_H_step=6.0
+
+# Multiplicative growth factor for the outward bracket search
+bracket_growth_factor=1.6
+
+# Number of intervals in the fallback directional H scan
+bracket_scan_points=200
