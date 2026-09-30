@@ -203,6 +203,26 @@ def Binit(H):
     return _scalar_or_array(value, H)
 
 
+def major_loop_collapsed(H):
+    """Return True when the major-loop width is numerically negligible.
+
+    In this region the upper and lower limiting branches are no longer
+    distinguishable at the numerical resolution of the model.  A reversal
+    there must not start a Tellinen minor branch because the Tellinen
+    equations contain 1 / (Upper - Lower).  Instead, the previous reversal
+    memory is treated as wiped out and the trajectory continues on the
+    appropriate major-loop branch.
+    """
+    D = np.asarray(Upper(H), dtype=float) - np.asarray(Lower(H), dtype=float)
+
+    # Use a slightly wider threshold than the hard singularity limit so that
+    # the integrals are not evaluated with an enormous 1 / D caused only by
+    # round-off near the point where the limiting branches merge.
+    D_sat = max(D_tol, 10.0 * B_tol)
+
+    return bool(np.all(D <= D_sat))
+
+
 def loop_width(H):
     D = np.asarray(Upper(H)) - np.asarray(Lower(H))
 
@@ -567,15 +587,27 @@ def BH_increasing(
     reversal_stack,
 ):
     stack_new = list(reversal_stack)
+    root_new = root_branch
 
-    # A direction change creates a real reversal point.
+    # A direction change normally creates a real reversal point.
     if not was_inc:
-        stack_new.append((float(Hlast), float(Blast)))
+
+        # If the reversal occurs where the upper and lower limiting branches
+        # have already merged, the Tellinen equations are singular because
+        # Upper - Lower -> 0.  Physically this is the saturation end of the
+        # major loop: the old reversal memory has been wiped out.  When H
+        # starts increasing from that region, continue on the lower major
+        # branch instead of creating a zero-width minor loop.
+        if major_loop_collapsed(Hlast):
+            stack_new.clear()
+            root_new = "lower_major"
+        else:
+            stack_new.append((float(Hlast), float(Blast)))
 
     return _advance(
         H,
         "inc",
-        root_branch,
+        root_new,
         stack_new,
     )
 
@@ -595,14 +627,25 @@ def BH_decreasing(
     reversal_stack,
 ):
     stack_new = list(reversal_stack)
+    root_new = root_branch
 
-    # A direction change creates a real reversal point.
+    # A direction change normally creates a real reversal point.
     if not was_dec:
-        stack_new.append((float(Hlast), float(Blast)))
+
+        # Symmetric case at the positive saturation end of the major loop.
+        # Once the limiting branches have merged, the old reversal memory is
+        # no longer distinguishable.  When H starts decreasing, continue on
+        # the upper major branch and do not invoke the singular Tellinen
+        # minor-branch equations at Upper - Lower ~= 0.
+        if major_loop_collapsed(Hlast):
+            stack_new.clear()
+            root_new = "upper_major"
+        else:
+            stack_new.append((float(Hlast), float(Blast)))
 
     return _advance(
         H,
         "dec",
-        root_branch,
+        root_new,
         stack_new,
     )
