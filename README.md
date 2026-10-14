@@ -44,7 +44,7 @@ The major hysteresis loop is supplied in tabulated form and can be obtained from
 
 The project generates a family of symmetric minor loops inside the major hysteresis loop and evaluates the corresponding amplitude permeability. This makes it possible to compare the permeability predicted from the hysteresis model with experimentally reported amplitude-permeability data and to investigate how the shape of minor loops affects the effective magnetic response of the material.
 
-The project is intended primarily as an additional validation and analysis tool for the Tellinen–Madelung model rather than as an independent hysteresis model.
+The project is intended primarily as an additional validation and analysis tool for the Tellinen–Madelung model rather than as an independent hysteresis model. See the PDF reports in this folder (in Russian and English).
 
 ## Tellinen-Madelung-Model-Inductor
 
