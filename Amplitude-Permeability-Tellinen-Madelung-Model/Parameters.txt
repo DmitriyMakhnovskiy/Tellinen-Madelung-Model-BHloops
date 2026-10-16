@@ -1,0 +1,23 @@
+# Two-stage Tellinen-Madelung amplitude-permeability experiment.
+# Hmajor is the initial point H(0)=+Hmajor on the UPPER MAJOR branch.
+# Choose it near positive saturation, inside the common measured H range.
+Hmajor=1000.0
+
+# First stage: sinusoidal demagnetization to the residual amplitude Hswitch.
+# Hfloor is the asymptotic envelope floor (A/m), NOT a B-offset.
+Hfloor=0.1
+DemagPeriods=48
+
+# Second stage: amplitude rises from Hswitch to the target Hb.
+HbMin=10.0
+HbMax=1000.0
+HbPoints=30
+RemagPeriods=48
+SamplesPerPeriod=120
+
+# Numerical tolerances and original Tellinen-Madelung integration options.
+H_tol=1.0e-9
+B_tol=1.0e-9
+D_tol=1.0e-12
+IntegrationMethod=lagrange
+IntegrationIntervals=500
